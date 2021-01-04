@@ -13,11 +13,13 @@ if ($module == "" || $action =="") {
 //kiem tra duong dan co hop le hay khong 
 $path ="modules/$module/$action.php";
 if(file_exists($path)==true){
-	require_once ('config/connect.php');
-	require_once ('config/session.php');
+	require_once ('cf/connectSQL.php');
+	session_start();
 	require_once ($path);
-	require_once ('config/close.php');
+	require_once ('cf/closeConnect.php');
 }
 else{
 	$path = "modules/common/error.php";
 	require_once($path);
+}
+?>

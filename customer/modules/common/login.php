@@ -1,11 +1,10 @@
 <?php 
 $error = "Đăng nhập để tiếp tục!" ;
 if(isset($_POST['btn'])){
-	$user = $_POST['user'];
-	$email = $_POST['email'];
+	$buyer = $_POST['PhoneOrEmail'];
 	$pw = md5($_POST['pw']);
 	//require_once 'connect.php';
-	$sql = "SELECT id,name FROM admin WHERE name='$user' AND email = '$email' AND pass='$pw' ";
+	$sql = "SELECT id,name FROM customer WHERE phone='$buyer' OR email = '$buyer' AND pass='$pw' ";
 	$result = mysqli_query($conn,$sql);
 	if ($result==false) {
 		
@@ -17,7 +16,7 @@ if(isset($_POST['btn'])){
 			$_SESSION['user']['id'] = $row['id'];
 			$_SESSION['user']['pw'] = $row['pw'];
 			//chuyển hướng về trang Home
-			header("Location:index.php?module=product&action=list");
+			header("Location:index.php?module=product&action=listKH");
 		}
 		else{
 			$error = "Tài khoản không hợp lệ !";
@@ -34,9 +33,7 @@ if(isset($_POST['btn'])){
 <body>
 	<h2 style="color: green"><?php echo $error; ?></h2>
 <form method="POST">
-	<input type="text" name="user" required placeholder="Name">
-	<br><br>
-	<input type="text" name="email" required placeholder="Email">
+	<input type="text" name="PhoneOrEmail" required placeholder="Phone or Email">
 	<br><br>
 	<input type="password" name="pw" required placeholder="Password">
 	<br>

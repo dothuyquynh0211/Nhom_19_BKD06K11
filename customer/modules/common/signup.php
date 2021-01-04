@@ -16,7 +16,7 @@ if(isset($_POST['btn'])){
 	$result = mysqli_query($conn,$sql);
 	if ($result == true) {
 		mysqli_close($conn);
-		header("Location: login.php");
+		header("Location:index.php?module=common&action=login");
 
 	}
 	else{
