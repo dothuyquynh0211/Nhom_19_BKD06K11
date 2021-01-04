@@ -5,11 +5,6 @@ if(isset($_POST['btn'])){
 	$email = $_POST['email'];
 	$pw = md5($_POST['pw']);
 	//require_once 'connect.php';
-	$conn = mysqli_connect("localhost","root","","bkd06k11");
-	if(!$conn)
-	{
-		die("Ket noi that bai".mysqli_connect_error($conn));
-	}
 	$sql = "SELECT id,name FROM admin WHERE name='$user' AND email = '$email' AND pass='$pw' ";
 	$result = mysqli_query($conn,$sql);
 	if ($result==false) {
