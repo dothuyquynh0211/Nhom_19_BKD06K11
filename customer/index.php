@@ -7,8 +7,8 @@ if (isset($_GET['action'])) {
 	$action = $_GET['action'];
 }
 if ($module == "" || $action =="") {
-	$module = "common";
-	$action ="signup";
+	$module = "home";
+	$action ="home";
 }
 //kiem tra duong dan co hop le hay khong 
 $path ="modules/$module/$action.php";

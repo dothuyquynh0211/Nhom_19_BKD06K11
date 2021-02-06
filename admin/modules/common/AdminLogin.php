@@ -64,7 +64,7 @@ if(isset($_POST['btn'])){
 			font-size: 20px;
 			width: 270px;
 			height: 35px;
-
+			outline: none;
 			border : 1px solid green;
 			padding-left: 20px;
 			border-radius: 5px;
@@ -87,6 +87,8 @@ if(isset($_POST['btn'])){
 			font-size: 20px;
 			border: none;
 			font-style: italic;
+			outline: none;
+
 
 		}
 		#login button:hover{

@@ -3,10 +3,11 @@
 <head>
 	<title><?php echo $title;?> </title>
 	<meta charset="utf_8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style type="text/css">
 		*{
 			padding: 0;
-			margin: auto;
+			margin: 0;
 			box-sizing:border-box;
 			border-collapse: collapse;
 		}
@@ -18,19 +19,19 @@
 			height: 100vh;
 			margin: auto;
 			background-color: white;
+			
 		}
 		.header{
 			width: 100%;
 			height: 17vh;
 			background-image:linear-gradient(to right,white, lightgreen);
 		}
-		.menu{
-			width: 200px;	
+		#menu{
+			width: 20%;	
 			height: 30vh;
 			float : left;
-			background: 
 		}
-		.menu ul{
+		#menu ul{
 			padding: 0px;				
 			font-size: 20px;
 			background: #8AD385;
@@ -38,30 +39,30 @@
 			text-align: center;
 			font-style: italic;
 		}
-		.menu li{
+		#menu li{
  			border-bottom: 1px solid #e8e8e8;
 			width: auto;
 			line-height: 3;
 		}
-		.menu li a{
+		#menu li a{
 			display: block;
 			color:white;
 			
 			text-decoration: none;
 			
 		}
-		.menu li:hover{
+		#menu li:hover{
 			background: #00FF2A;
 			transition: background 1s;
 
 		}
-		.menu li ul{
+		#menu li ul{
 			display: none;
 		}
-		.menu ul li{
+		#menu ul li{
 			position: relative;
 		}
-		.menu #cd{
+		 #cd{
 			width: 200px;
 			background:lightgray;
 			position: absolute;
@@ -78,14 +79,15 @@
 
 		}
 
-		.menu li:hover ul{
+		#menu li:hover ul{
 			display: block;
 		}
 		
 		.content{
 			float: left;
 			width: 80%;
-			height: 550px;
+			height: 82vh;
+			overflow: auto;
 			border-left: 2px solid green;
 		}
 		img{
@@ -103,7 +105,7 @@
 		<div class="header" >
 			<img src="img/logo04.png" alt="Logo">
 		</div>
-		<div class="menu">
+		<div id="menu">
 			<ul>
 				<li><h3><?php if(isset($_SESSION['admin'])) echo $_SESSION['admin']['name'];?></h3>
 					<ul id="cd">
