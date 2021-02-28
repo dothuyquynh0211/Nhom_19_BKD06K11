@@ -1,7 +1,7 @@
 			
 		</div>
 		<div class="footer">
-			<p>footer</p>
+			<p>Địa chỉ liên hệ:</p>
 		</div>
 	</div>
 	

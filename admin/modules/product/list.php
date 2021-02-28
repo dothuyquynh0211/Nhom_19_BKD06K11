@@ -1,12 +1,20 @@
 
-<?php 
 
-if(!isset($_SESSION['admin'])){
-	header("Location:index.php?modules=common&action=AdminLogin");
+<?php  
+$sql="SELECT id_Product, Name, Price,image,Status FROM Product ORDER BY id_Product DESC";
+if(isset($_GET['kw'])){
+	$kw=$_GET['kw'];
+	$sql="SELECT id_Product, Name, Price,image,Status FROM Product WHERE Name LIKE '%$kw%'";
+}
+$result = mysqli_query($conn,$sql);
+if($result == false){
+	echo "Loi: ".mysqli_error($conn);
+	mysqli_close($conn);
+	die();		
 }
 ?>
 <?php 
-$title="Product" ; 
+$title="Sản Phẩm" ; 
 require_once 'Layout/header.php';
 ?>
 <style type="text/css">
@@ -25,6 +33,14 @@ require_once 'Layout/header.php';
 		
 	}
 	</style>
+	<div class="search">
+		<form class="content_search" >
+			<input type="hidden" name="module" value="product">
+			<input type="hidden" name="action" value="list">
+			<input type="text" name="kw" placeholder="Bạn cần tìm kiếm...">
+			<button type="submit" name="btnSearch"><i class="fas fa-search"></i></button>
+			</form>
+	</div>
 <div class="list_product_admin">
 	
 <h1 style="color: green">Danh sách sản phẩm</h1>
@@ -41,17 +57,15 @@ require_once 'Layout/header.php';
 		<th>Gía</th>
 		<th>Tình trạng</th>
 		<th colspan="2">Action</th>
+		<th>Xem chi tiết</th>
 	</tr>
 	<tr>
 		<?php 
-			$sql="SELECT id_Product, Name, Price,image,Status FROM Product";
-			$result = mysqli_query($conn,$sql);
-			if($result == false){
-				echo "Loi: ".mysqli_error($conn);
-			}
-			else if(mysqli_num_rows($result)==0){
+			$total=mysqli_num_rows($result);
+			if(isset($kw)) echo "<h2> Có tất cả $total kết quả tìm kiếm cho $kw </h2>";
+			if(mysqli_num_rows($result)==0){
 				echo"<tr>
-				<th colspan='7'>Danh sach trong</th></tr>";
+				<th colspan='8'>Danh sach trong</th></tr>";
 			}
 			else{
 				foreach ($result as $row) {
@@ -74,6 +88,9 @@ require_once 'Layout/header.php';
 					echo "</td>";	
 					echo "<td>";
 						echo "<a href='index.php?module=product&action=delete&id=$id'> Delete </a>";
+					echo "</td>";
+					echo "<td>";
+						echo "<a href='index.php?module=product&action=view_product&id=$id'> xem chi tiết </a>";
 					echo "</td>";
 					echo "</tr>";
 				}

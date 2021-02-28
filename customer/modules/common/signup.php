@@ -1,28 +1,27 @@
 <?php  
 $name = $sdt = $pw = $error ="";
-if(isset($_POST['btn'])){
+if(isset($_POST['btnSignup'])){
 	$name = $_POST['Name'];
 	$sdt = $_POST['Phone'];
 	$add = $_POST['address'];
 	$email = $_POST['email'];
 	$pw = md5($_POST['pass']);
 	$pw2 = md5($_POST['pass2']);
-	$conn = mysqli_connect("localhost","root","","bkd06k11");
-	if(!$conn)
-	{
-		die("Ket noi that bai".mysqli_connect_error($conn));
-	}
-	$sql= "INSERT INTO customer VALUES (null,'$name','$sdt','$email','$add','$pw')";
+	$anh="../public/avt_cus/customer.png";
+
+
+	$sql= "INSERT INTO customer VALUES (null,'$name','$sdt','$email','$add','$anh','$pw')";
 	$result = mysqli_query($conn,$sql);
 	if ($result == true) {
-		mysqli_close($conn);
+		echo "Đăng kí thành công !";
+		$_SESSION['id_Cus']=mysqli_insert_id($conn);
+		$_SESSION['signup']= $name;
+		$_SESSION['avt']= $anh;
 		header("Location:index.php?module=common&action=login");
-
 	}
 	else{
 		echo $error = "loi: ".mysqli_error($conn);
 	}
-	mysqli_close($conn);
 }
 ?>
 <!DOCTYPE html>
@@ -46,7 +45,7 @@ if(isset($_POST['btn'])){
 		<br>
 		<input type="password" name="pass2" placeholder="Nhập lại pasword" required>
 		<br>
-		<button type="submit" name="btn">Dang ki</button>
+		<button type="submit" name="btnSignup">Dang ki</button>
 	</form>
 
 </body>

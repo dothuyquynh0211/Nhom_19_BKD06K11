@@ -1,22 +1,22 @@
 <?php 
 $error = "Đăng nhập để tiếp tục!" ;
-if(isset($_POST['btn'])){
+if(isset($_POST['btnLogin'])){
 	$buyer = $_POST['PhoneOrEmail'];
 	$pw = md5($_POST['pw']);
 	//require_once 'connect.php';
-	$sql = "SELECT id,name FROM customer WHERE phone='$buyer' OR email = '$buyer' AND pass='$pw' ";
+	$sql = "SELECT id_Customer,Username FROM customer WHERE Phone='$buyer' OR Email = '$buyer' AND Pass='$pw' ";
 	$result = mysqli_query($conn,$sql);
 	if ($result==false) {
-		
+		$error=mysqli_error($conn);
 	}
 	else{
 		if (mysqli_num_rows($result)==1) {
 			// lưu thông tin vào SESSION
 			$row = mysqli_fetch_assoc($result);
-			$_SESSION['user']['id'] = $row['id'];
-			$_SESSION['user']['pw'] = $row['pw'];
+			$_SESSION['id_Cus'] = $row['id_Customer'];
+			$_SESSION['signup'] = $row['Username'];
 			//chuyển hướng về trang Home
-			header("Location:index.php?module=product&action=listKH");
+			header("Location:index.php?module=home&action=home");
 		}
 		else{
 			$error = "Tài khoản không hợp lệ !";
@@ -38,7 +38,7 @@ if(isset($_POST['btn'])){
 	<input type="password" name="pw" required placeholder="Password">
 	<br>
 	<br> 
-	<button type="submit" name="btn">Login</button>
+	<button type="submit" name="btnLogin">Login</button>
 </form>
 </body>
 </html>

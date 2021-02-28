@@ -5,6 +5,7 @@ if(isset($_POST['btn'])){
 	$status = $_POST['status'];
 	$description=$_POST['description'];
 	$id_Categorize=$_POST['categorize'];
+	$view=0;
 // 1 anh
 	if(isset($_FILES['image'])){
 		$file=$_FILES['image'];
@@ -23,20 +24,28 @@ if(isset($_POST['btn'])){
 	if(isset($_FILES['images'])){
 		$files=$_FILES['images'];
 		$file_names= $files['name'];
-		
+
 		if($file['type']=="image/jpg" || $file['type']=="image/png" ||$file['type']=="image/jpeg"){
 			foreach ($file_names as $key =>$value) {
-			move_uploaded_file($files['tmp_name'][$key],'../public/images/'.$value);
+				$url2='../public/images/'.$value;
+			move_uploaded_file($files['tmp_name'][$key],$url2);
 			}
 		}
 		
+		
 	}
-	$sql="INSERT INTO Product VALUES (null,'$name','$price','$url','$description','$status','$id_Categorize')";
+	$sql="INSERT INTO Product VALUES (null,'$name','$price','$url','$description','$status','$id_Categorize','$view')";
 	$result=mysqli_query($conn,$sql);
-	//lay ra id product	
+	//lay ra id product		
 	$id_Product=mysqli_insert_id($conn);
+	
 	foreach ($file_names as $key => $value) {
-		mysqli_query($conn,"INSERT INTO product_images VALUES('$id_Product','$value')");
+		$url2='../public/images/'.$value;
+		$sqli="INSERT INTO product_images VALUES('$id_Product','$url2')";
+		$resulti=mysqli_query($conn,$sqli);
+		if($resulti==false){
+		echo "Loi anh phu : ".mysqli_error($conn);
+		}
 	}
 	if($result==false){
 		echo "Loi: ".mysqli_error($conn);

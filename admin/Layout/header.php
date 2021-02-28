@@ -4,6 +4,7 @@
 	<title><?php echo $title;?> </title>
 	<meta charset="utf_8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	<style type="text/css">
 		*{
 			padding: 0;
@@ -110,7 +111,7 @@
 				<li><h3><?php if(isset($_SESSION['admin'])) echo $_SESSION['admin']['name'];?></h3>
 					<ul id="cd">
 						<li>
-							<a href="">Quản lý</a>
+							<a href="index.php?module=common&action=manage">Quản lý</a>
 							<a href="index.php?module=common&action=AdminLogin">Đăng xuất</a>
 						</li>
 					</ul>

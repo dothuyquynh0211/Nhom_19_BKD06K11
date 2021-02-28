@@ -2,7 +2,7 @@
 
 $error = "" ;
 if(isset($_POST['btn'])){
-	$user = $_POST['user'];
+	$user = $_POST['user']; 
 	$email = $_POST['email'];
 	$pw = md5($_POST['pw']);
 	$sql = "SELECT id_Admin,Name FROM Admin WHERE Name='$user' AND Email = '$email' AND Pass='$pw' ";

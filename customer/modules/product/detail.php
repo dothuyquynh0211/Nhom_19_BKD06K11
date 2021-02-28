@@ -1,7 +1,7 @@
 <?php 
 if(isset($_GET['id'])) {
-	$id=$_GET['id'];
-	$sql="SELECT * FROM Product WHERE id_Product='$id'";
+	$Id=$_GET['id'];
+	$sql="SELECT product.*,product_images.URL FROM `product` JOIN product_images ON product_images.id_Product=product.id_Product WHERE product.id_Product='$Id'";
 	$result=mysqli_query($conn,$sql);
 	if($result==false){
 		echo "Loi: ".mysqli_error($conn);
@@ -29,21 +29,30 @@ require_once ('layout/headerCus.php');
   		<div class="main_picture">
   			<img src="<?php echo $url ?>" width='300px' heigh='150px'>
   		</div>
-  		<div class="secondary_picture"></div>
+  		<div class="secondary_picture">
+      <?php  
+        foreach ($result as $key => $value) {
+          $url2=$value['URL'];
+
+          echo "<img src='$url2' style='max-height: 100px; max-width: 250px;'>";
+          //<img src="<?php echo $value['URL'];" alt="ảnh phụ" style="max-height: 100px; max-width: 250px;">         
+       } 
+       ?>  
+      </div>
   		
   	</div>
   	<div class="inf_product">
-  		<h3><?php  echo $name; ?></h3>
-  		<p>Gía: <?php echo $price; ?></p>
+  		<h3><?php  echo $name ; ?></h3>
+  		<p>Gía: <?php echo $price ; ?></p>
   		<p>
   			Mô tả : <?php  echo $dess ?>
   		</p>
   	</div>
     <div class="shopping-carts">
-      <a href="index.php?module=invoice&action=cart&id=<?php echo $id ?>"><button>thêm vào giỏ hàng</button></a>
+      <a href="index.php?module=invoice&action=cart&id=<?php echo $Id ?>&up"><button>thêm vào giỏ hàng</button></a>
     </div>
     <div class="invoice">
-      <a href="index.php?module=invoice&action=cart&id=<?php echo $id ?>"><button>mua ngay</button></a>
+      <a href="index.php?module=invoice&action=cart&id=<?php echo $Id ?>&up"><button>mua ngay</button></a>
     </div>
   </div>
 <?php  

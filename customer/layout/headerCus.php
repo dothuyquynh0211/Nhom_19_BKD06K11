@@ -5,128 +5,7 @@
 		<?php  echo $title;?>
 	</title>
 	<meta charset="utf-8">
-	<style type="text/css">
-		*{
-			padding: 0;
-			margin: auto;
-			box-sizing:border-box;
-			border-collapse: collapse;
-		}
-		*{
-			margin: 0;
-			padding:0;
-			box-sizing: border-box;
-		}
-		
-		.container{
-			width: 1200px;
-			overflow: auto;
-			margin: auto;
-			background-color: white;
-
-		}
-		.header{
-			width: 100%;
-			height: 17vh;
-			background-image:linear-gradient(to right,pink, lightgreen);
-		}
-		.content form{
-			padding :10px ;
-			text-align: center;
-		}
-		.content_search input{
-			width: 250px;
-			height: 30px;
-			border:1px solid green;
-			border-radius: 10px;
-			outline: none;
-			padding-left: 10px;
-
-		}
-		.navbar{
-			display: flex;
-			align-items: center;
-			
-		}
-		nav{
-			flex: 1;
-			text-align: right;
-		}
-		nav ul{
-			display: inline-block;
-			list-style-type: none;
-			text-decoration: none;
-		}
-		nav ul li {
-			display: inline-block;
-			margin-right: 20px;
-		}
-		.navbar a {
-			text-decoration:none;
-		}
-		.menu{
-			width: 20%;	
-			float:left;
-		
-			position: relative;
-
-		}
-		.menu ul {
-			position: relative;
-		}
-		.menu ul li{
-			position: relative;
-			left:0;
-			color:#999;
-			list-style: none;
-			margin: 4px 0;
-			border-left: 2px solid green;
-			transition: 0.5s;
-			cursor: pointer;
-		}
-		.menu ul li::before{
-			content: '';
-			position: absolute;
-			width: 90%;
-			height: 100%;
-			background: lightgreen;
-			transform: scaleX(0);
-			transition: 0.5s;
-			transform-origin: left;
-		}
-		.menu ul li:hover::before{
-			transform: scaleX(1);
-		}
-		.menu ul li:hover{
-			left: 15px;
-		}
-		.menu ul li a{
-			position: relative;
-			padding:8px;
-			display: inline-block;
-			z-index: 1;
-			transition: 0.5s;
-			text-decoration: none;
-			color: green;
-		}
-		.menu ul li:hover a{
-			color:black;
-		}
-		.content{
-			float:left;
-			padding-left: 20px;
-			width: 80%;
-			height: 100vh;
-			border: 1px solid green;
-			
-		}
-		.footer{
-			width: 100%;
-			height: 100px;
-			background: pink;
-			clear: both;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="layout/style.css">
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
@@ -151,7 +30,47 @@
 							<a href="">Contact</a>
 						</li>
 						<li>
-							<a href="index.php?module=common&action=signup">Dang nhap</a>
+							<!-- <img src="../public/avt_cus/customer.png" alt="1" width="50px" height="50px"> -->
+							<?php 
+							if(isset($_SESSION['id_Cus'])){
+								echo "<a href='index.php?module=common&action=setting'>";
+								if(!isset($_SESSION['avt'])){							
+									$id=$_SESSION['id_Cus'];
+									$query=(mysqli_query($conn,"SELECT Avatar FROM customer WHERE id_Customer='$id'"));
+									$row=mysqli_fetch_assoc($query);
+									$anh=$row['Avatar'];
+									echo "<img src='$anh' width='30px' heigh='30px' >";
+								}
+								else {
+									$anh=$_SESSION['avt'];
+									echo "<img src='$anh' width='30px' heigh='30px' >";
+								}
+								
+								echo "<p>".$_SESSION['signup']."</p>";
+								echo "</a>";
+								// echo "<a href='index.php?module=common&action=logout'>Dang xuat</a>";
+							}
+							else{
+								echo "<a href='index.php?module=common&action=login'>Dang nhap</a>";
+								echo "<a href='index.php?module=common&action=signup'>Dang ky</a>";
+							 
+							}
+							?>
+							
+						</li>
+						
+						<li>
+							<a href="index.php?module=invoice&action=cart">Gio hang
+							<?php  
+							$sl=0;
+							if(isset($_SESSION['cart'])){
+								foreach ($_SESSION['cart'] as $id => $quantity) {
+									$sl += $quantity;
+								}
+								echo "[$sl]";
+							}
+							?> 
+							</a>
 						</li>
 					</ul>
 				</nav>
@@ -162,11 +81,11 @@
 		<div class="menu">
 			
 			<ul>
-				<li><a href=""><i class="fas fa-seedling"></i>Danh mục</a></li>
+				<li><a href="index.php?module=product&action=product"><i class="fas fa-seedling"></i>Danh mục</a></li>
 				<li><a href="index.php?module=product&action=list_Caydeban"><i class="fas fa-seedling"></i> Cây để bàn</a></li>
-				<li><a href=""><i class="fas fa-seedling"></i>Cây mini</a></li>
-				<li><a href=""><i class="fas fa-seedling"></i>Cây phong thủy</a></li>
-				<li><a href=""><i class="fas fa-seedling"></i>Cây thủy sinh</a></li>
+				<li><a href="index.php?module=product&action=list_Caymini"><i class="fas fa-seedling"></i>Cây mini</a></li>
+				<li><a href="index.php?module=product&action=list_Cayphongthuy"><i class="fas fa-seedling"></i>Cây phong thủy</a></li>
+				<li><a href="index.php?module=product&action=list_Caythuysinh"><i class="fas fa-seedling"></i>Cây thủy sinh</a></li>
 			</ul>
 		</div>
 		<div class="content">

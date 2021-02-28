@@ -52,16 +52,19 @@ if(isset($_POST['btn'])){
 	if(isset($_FILES['images'])){
 		$files=$_FILES['images'];
 		$file_names= $files['name'];
+
 		if (!empty($file_names[0])) {
 			//xoa anh cu 
 			mysqli_query($conn,"DELETE FROM product_images WHERE id_Product='$id'");
-			//chuyen file
+			//chuyển file 
 			foreach ($file_names as $key =>$value) {
-				move_uploaded_file($files['tmp_name'][$key],'../public/images/'.$value);
+				$url2 = "../public/images/".$file_names;
+				move_uploaded_file($files['tmp_name'][$key],$url2);
 			}
 			//insert anh moi vao
-			foreach ($file_names as $key => $value) {
-				mysqli_query($conn,"INSERT INTO product_images VALUES('$id','$value')");
+			foreach ($file_names as $key => $valuea) {
+				$url2='../public/images/'.$value;
+				mysqli_query($conn,"INSERT INTO product_images VALUES('$id','$url2')");
 			}
 		}	
 	}
@@ -145,7 +148,7 @@ require_once 'Layout/header.php';
 			<br>
 			<?php  
 				foreach ($img_pro as $key => $value) { ?>
-					<img src="../public/images/<?php echo $value['URL'];?>" alt="ảnh phụ" style="max-height: 100px; max-width: 250px;">
+					<img src="<?php echo $value['URL'] ?>" alt='ảnh phụ' style="max-height: 100px; max-width: 250px;">
 				
 			<?php } ?>
 
