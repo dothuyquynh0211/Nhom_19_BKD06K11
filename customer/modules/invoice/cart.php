@@ -60,7 +60,7 @@ require_once ('layout/headerCus.php');
 			$total_payment=0;
 			foreach ($_SESSION['cart'] as $id => $quantity) {
 				$count +=1;			
-			 	$sql="SELECT Name, Price, image FROM Product WHERE id_Product='$id'";
+			 	$sql="SELECT id_Product,Name, Price, image FROM Product WHERE id_Product='$id'";
 			 	$result= mysqli_query($conn,$sql);
 			 	if ($result == false) {
 			 		echo "Loi: ".mysqli_error($conn);
@@ -70,7 +70,7 @@ require_once ('layout/headerCus.php');
 			 		$name =$row['Name'];
 			 		$url=$row['image'];
 			 		$price = $row['Price'];
-			 		
+			 		$id_Pro=$row['id_Product'];
 			 		echo "<tr>";
 			 			echo "<td>".$count."</td>";
 			 			echo "<td>";
@@ -101,7 +101,10 @@ require_once ('layout/headerCus.php');
 
 		?>
 	</table>
-	<a href="index.php?module=invoice&action=checkout"> Mua hang</a>
+	<?php  if (isset($id_Pro))  {
+		echo "<a href='index.php?module=invoice&action=checkout'> Mua hang</a>";		
+	} ?>
+	
 </div>
 <?php  
 require_once ('layout/footerCus.php');

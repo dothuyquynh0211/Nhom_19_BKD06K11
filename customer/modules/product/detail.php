@@ -23,18 +23,25 @@ if(isset($_GET['id'])) {
 $title="Chi tiet san pham";
 require_once ('layout/headerCus.php');
 ?>
+<script>
+  function changeImg(id){
+    let = imgPath = document.getElementById(id).getAttribute('src');
+    document.getElementById('main_pic').setAttribute('src',imgPath);
+  }
+</script>
   <div class="wraper_detail_product">
-  	<h1>Chi tiết sản phẩm</h1>
+    <h3 style="color: grey">Trang chủ/ Cây để bàn</h3>
   	<div class="img_detail_Product">
   		<div class="main_picture">
-  			<img src="<?php echo $url ?>" width='300px' heigh='150px'>
+  			<img src="<?php echo $url ?>" id="main_pic">
   		</div>
   		<div class="secondary_picture">
       <?php  
+        echo "<img src='$url' onclick='changeImg(id)' id='0'>";
         foreach ($result as $key => $value) {
+          $key++;
           $url2=$value['URL'];
-
-          echo "<img src='$url2' style='max-height: 100px; max-width: 250px;'>";
+          echo "<img src='$url2' onclick='changeImg(id)' id='$key'>";
           //<img src="<?php echo $value['URL'];" alt="ảnh phụ" style="max-height: 100px; max-width: 250px;">         
        } 
        ?>  
@@ -47,13 +54,14 @@ require_once ('layout/headerCus.php');
   		<p>
   			Mô tả : <?php  echo $dess ?>
   		</p>
+      <div class="shopping-carts">
+        <a href="index.php?module=invoice&action=cart&id=<?php echo $Id ?>&up"><button>thêm vào giỏ hàng</button></a>
+      </div>
+      <div class="invoice">
+        <a href="index.php?module=invoice&action=cart&id=<?php echo $Id ?>&up"><button>mua ngay</button></a>
+      </div>
   	</div>
-    <div class="shopping-carts">
-      <a href="index.php?module=invoice&action=cart&id=<?php echo $Id ?>&up"><button>thêm vào giỏ hàng</button></a>
-    </div>
-    <div class="invoice">
-      <a href="index.php?module=invoice&action=cart&id=<?php echo $Id ?>&up"><button>mua ngay</button></a>
-    </div>
+    
   </div>
 <?php  
 require_once ('layout/footerCus.php');

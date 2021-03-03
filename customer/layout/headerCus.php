@@ -4,9 +4,18 @@
 	<title>
 		<?php  echo $title;?>
 	</title>
+	<style>
+		.avt{
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+		}
+	</style>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="layout/style.css">
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	
+	<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="container">
@@ -39,11 +48,11 @@
 									$query=(mysqli_query($conn,"SELECT Avatar FROM customer WHERE id_Customer='$id'"));
 									$row=mysqli_fetch_assoc($query);
 									$anh=$row['Avatar'];
-									echo "<img src='$anh' width='30px' heigh='30px' >";
+									echo "<img src='$anh' class='avt' >";
 								}
 								else {
 									$anh=$_SESSION['avt'];
-									echo "<img src='$anh' width='30px' heigh='30px' >";
+									echo "<img src='$anh'  class='avt' >";
 								}
 								
 								echo "<p>".$_SESSION['signup']."</p>";

@@ -32,14 +32,17 @@ if(isset($_POST['btn'])){
 		$file_name= $file['name'];
 		$folder ="../public/images/";
 		$url = $folder.$file_name;
+
 		//truong hop nguoi dung khong chon anh
 		if (empty($file_name)) {
-			$file_name = $row['image'];
+			$url = $row['image'];
 		}
 		//truong hop chon lai anh
 		else{
 			if($file['type']=="image/jpg" || $file['type']=="image/png" ||$file['type']=="image/jpeg"){
+
 			move_uploaded_file($file['tmp_name'],$url);
+
 			}
 			else{
 				echo "Không đúng định dạng";
@@ -62,13 +65,13 @@ if(isset($_POST['btn'])){
 				move_uploaded_file($files['tmp_name'][$key],$url2);
 			}
 			//insert anh moi vao
-			foreach ($file_names as $key => $valuea) {
+			foreach ($file_names as $key => $value) {
 				$url2='../public/images/'.$value;
 				mysqli_query($conn,"INSERT INTO product_images VALUES('$id','$url2')");
 			}
 		}	
 	}
-	$sql="UPDATE Product SET Name='$name',Price='$price',image='$file_name',Description='$description',Status='$status',id_Categorize='$id_Categorize'WHERE id_Product='$id'";
+	$sql="UPDATE Product SET Name='$name',Price='$price',image='$url',Description='$description',Status='$status',id_Categorize='$id_Categorize'WHERE id_Product='$id'";
 	$result=mysqli_query($conn,$sql);
 	
 	if($result==false){
@@ -140,7 +143,7 @@ require_once 'Layout/header.php';
 		<br>
 		<label >  Ảnh <br>
 			<input type="file" name="image" >
-			<img src="<?php echo $file_name;?>" >
+			<img src="<?php echo $file_name ;?>" >
 		</label>
 		<br>
 		<label > Ảnh mô tả <br>

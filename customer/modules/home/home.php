@@ -46,7 +46,7 @@ if ($result_ban==false) {
   <div class="box">
   	<h2>Sản phẩm nổi bật</h2>
     <!-- lấy ra sản phẩm có view lớn nhất -->
-    <a href="index.php?module=product&action=product"> xem thêm > </a>
+    <a href="index.php?module=product&action=product"> xem thêm  </a>
     <table>
       <?php 
         $total=mysqli_num_rows($result_noibat); 
