@@ -3,14 +3,31 @@
 		<footer>
 		
 		<div class="ft-qc">
-			<h1>aaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+			<div class="header_content">
+				<div class="icon">
+					<span class="far fa-check-circle"></span>
+					<span class="txt"> Sản phẩm đa dạng phong phú</span>
+				</div>
+				<div class="icon">
+					<span class="fa fa-bullhorn"></span>
+					<span class="txt">Gía tốt nhẩt</span>
+				</div>
+				<div class="icon">
+					<span class="fas fa-award"></span>
+					<span class="txt">Uy tín, chất lượng </span>
+				</div>
+				<div class="icon">
+					<span ><i class="far fa-comments"></i></span>
+					<span class="txt">Tư vấn miễn phí, tận tâm </span>
+				</div>
+			</div>
 		</div>
 		<div class="main_content">	
 			<div class="left boxx">
 				<img src="layout/img/logo04.png" alt="Chun Garden" >
 				
 				<div class="content_box">
-					<p> Nơi cung cấp đầy đủ cây cảnh mini, Sen đá, Xương rồng, cây nội thất tiểu cảnh - terarium- cây để bàn cho không gian sống của bạn.</p>	
+					<p> Nơi cung cấp đầy đủ cây cảnh mini, Sen đá, Xương rồng, cây nội thất tiểu cảnh, cây để bàn cho không gian sống của bạn.</p>	
 					<div class="social">
 					<a href=""><span class="fab fa-facebook-f"></span></a>
 					<a href=""><span class="fab fa-instagram"></span></a>

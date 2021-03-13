@@ -25,34 +25,37 @@
 			}
 		}
 	}
+	else{
+		echo $error="Bạn phải đăng nhập !";
+	}
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<h1>thông tin tài khoản</h1>
-	<div>Tên tài khoản : <?php  echo $name ;?></div>
-	<div>
-		<h2>Đổi mật khẩu</h2>
-		<p style="color: red"><?php echo $error; ?></p>
-		<form method="POST">
-				<p>Tên tài khoản</p>
-				<input type="text" name="user" required >
+<?php 
+$title="Password || Chun Garden" ;
+require_once ('layout/headerCus.php');
+?>
+<div class="change_pass">
+	<h2>Đổi mật khẩu</h2>
+	<p style="color: red"><?php echo $error; ?></p>
+	<form method="POST">
+		<p>Tên tài khoản</p>
+		<input type="text" name="user" required >
 				
-				<p>Email or Phone</p>
+		<p>Email hoặc Số điện thoại</p>
 				
-				<input type="text" name="email" required >
+		<input type="text" name="email" required >
 				
-				<p>mật khẩu cũ</p>
-				<input type="password" name="old_pw" required >
-				<p>mật khẩu mới</p>
-				<input type="password" name="new_pw" required >
-				<br> 
-				<button type="submit" name="btnUpdate">update</button>
-			</form>
-	</div>
-	<a href="index.php?module=common&action=setting">trở lại</a>
-</body>
-</html>
+		<p>Mật khẩu hiện tại</p>
+		<input type="password" name="old_pw" required >
+		<p>Mật khẩu mới</p>
+		<input type="password" name="new_pw" required >
+		<br> 
+		<button type="submit" name="btnUpdate">Cập nhật</button>
+	</form>
+</div>
+<div class="checkout">
+	<a href="index.php?module=common&action=setting"><i class="fas fa-arrow-left"></i></a>
+</div>
+	
+<?php  
+require_once ('layout/footerCus.php');
+?>

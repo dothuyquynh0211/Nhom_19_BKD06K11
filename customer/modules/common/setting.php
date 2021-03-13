@@ -1,9 +1,13 @@
 <?php
 $error="";
 $id=$_SESSION['id_Cus'];
-$sqli="SELECT Avatar FROM customer WHERE id_Customer='$id'";
+$sqli="SELECT Username, Phone, Email,Address, Avatar FROM customer WHERE id_Customer='$id'";
 $resulti=mysqli_query($conn,$sqli);
 $row=mysqli_fetch_assoc($resulti);
+$name=$row['Username'];
+$phone=$row['Phone'];
+$email=$row['Email'];
+$address=$row['Address'];
 
 if (isset($_POST['btn'])) {		
 	$file=$_FILES['image'];
@@ -41,14 +45,15 @@ require_once ('layout/headerCus.php');
 ?>
 <style>
 	#img_preview{
-		width: 100px;
-		height: 100px;
+		width: 200px;
+		height: 200px;
 		border: 2px solid grey;
 		/*border-radius: 50%;*/
 	}
 	#form{
 		left: 0px;
 	}
+
 </style>
 <script>
 		function changePhoto(){
@@ -58,9 +63,9 @@ require_once ('layout/headerCus.php');
 			vPhoto.src = vURL;
 		}
 	</script>
-<h1>thông tin tài khoản </h1>
-<div>
-	<h2>Thay đổi anh đại diện</h2>
+<div class="inf_cus">
+<h2>Thông tin tài khoản </h2>
+<div class="change_avt">
 	<form method="POST" enctype="multipart/form-data" id="form">
 
 		<img src="<?php echo $row['Avatar'] ?>" id="img_preview">
@@ -72,15 +77,23 @@ require_once ('layout/headerCus.php');
 		<button type="submit" name="btn">Cập nhật</button>
 
 	</form>
-	
+	<p><?php echo $name ; ?></p>
+	<p><?php echo $phone ;?> </p>
+	<p><?php echo $email ;?></p>
+	<p><?php echo $address ; ?></p>
 </div>
-<p><?php if(!empty($error)) echo $error;  ?></p>
-<a href="index.php?module=common&action=change">Đổi mật khẩu</a>
-<br>
-<a href="index.php?module=invoice&action=history">lịch sử mua hàng</a>
-<br>
-<a href="index.php?module=common&action=logout">Đăng xuất</a>
+<div class="feature">
+	<p><?php if(!empty($error)) echo $error;  ?></p>
+	<a href="index.php?module=common&action=change">Đổi mật khẩu</a>
+	<br>
+	<br>
+	<a href="index.php?module=invoice&action=history">Lịch sử mua hàng</a>
+	<br>
+	<br>
+	<a href="index.php?module=common&action=logout">Đăng xuất</a>
 
+</div>
+</div>
 <?php  
 require_once ('layout/footerCus.php');
 ?>

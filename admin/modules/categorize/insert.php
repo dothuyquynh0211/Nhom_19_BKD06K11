@@ -27,7 +27,7 @@ require_once 'Layout/header.php';
 	}
 </style>
 <div class="pl">
-	<h1>Danh sách phân loại tại đây</h1>
+	<h1>Thêm danh sách phân loại </h1>
 	<form method="POST">
 		<p>Tên loại cây</p>
 		<input type="text" name="Name" required >

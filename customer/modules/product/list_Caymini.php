@@ -15,7 +15,7 @@ $sqli="SELECT COUNT(`id_Product`) AS 'tongSp' FROM product WHERE id_Categorize=9
 $kq = mysqli_query($conn,$sqli);
 $row = mysqli_fetch_assoc($kq);
 $tong_sp =$row['tongSp'];//tong san pham co trong database
-$limit =3;
+$limit =12;
 $tongPages=ceil($tong_sp/$limit);
 if(isset($_GET['page'])){
 	$page = $_GET['page'];
@@ -52,14 +52,14 @@ else{
 			<button type="submit" ><i class="fas fa-search"></i></button>
 			</form>
 	</div>
-	<h3>Cây cảnh mini</h3>
-	<div class="box">
+	
+	<div class="box"><h2>Cây cảnh mini</h2>
 		<table>
 			<?php 
 				$total=mysqli_num_rows($result);
 				if(!empty($kw)) echo "<h2> Có tất cả $tong_sp kết quả tìm kiếm cho $kw </h2>";
 				$count=0;
-				$n=3;
+				$n=4;
 				while($count != $total){
 					echo "<tr>";
 						while ($row=mysqli_fetch_assoc($result)) {
@@ -70,7 +70,10 @@ else{
 									$url=$row['image'];
 									echo "<img src='$url' width='200px'>";
 									echo "<br><b>".$row['Name']."</b><br>";
-									echo "<b>".$row['Price']." VND</b>";
+                  					$price =$row['Price'];
+									$pricer=number_format("$price",0,",",".");
+                  					echo "<b class='gia'>".$pricer."₫</b>";
+									
 								echo "</a>";
 							echo "</td>";
 							if($count %$n==0) break;
@@ -81,10 +84,10 @@ else{
 			?>
 		</table>
 	</div>
-	<div>
-	<a href="index.php?module=product&action=list_Caymini<?php if(!empty($kw)) echo "&kw=$kw"; echo "&page=".($page-1);?>"><</a>
+	<div class="pagination">
+	<a href="index.php?module=product&action=list_Caymini<?php if(!empty($kw)) echo "&kw=$kw"; echo "&page=".($page-1);?>"><i class="far fa-arrow-alt-circle-left"></i></a>
 	<span><?php echo $page;?></span>
-	<a href="index.php?module=product&action=list_Caymini<?php if(!empty($kw)) echo "&kw=$kw"; echo "&page=".($page+1);?>">></a>
+	<a href="index.php?module=product&action=list_Caymini<?php if(!empty($kw)) echo "&kw=$kw"; echo "&page=".($page+1);?>"><i class="far fa-arrow-alt-circle-right"></i></a>
 	</div>
 
 <?php  

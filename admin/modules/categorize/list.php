@@ -11,12 +11,28 @@ require_once 'Layout/header.php';
 		width: 50%;
 	}
 	#list table, tr,th,td{
+		margin-top: 20px;
 		border: 1px solid green;
-		height: 30px;
+		height: 40px;
 		border-collapse: collapse;
 		text-align: center;
 	}
+	#list a{
+		color: green;
+		text-decoration: none; 
+		border: 1px solid green; 
+		padding: 5px;
 
+	}
+	
+	#list table tr td a{
+		color: blue;
+		border :none;
+		text-align: center;
+	}
+	.fa-trash-alt{
+		color: red;
+	}
 </style>
 <div id="list">
 	<h1>Danh sách phân loại:</h1>
@@ -26,7 +42,7 @@ require_once 'Layout/header.php';
 		<tr>
 			<th>ID</th>
 			<th>Tên</th>
-			<th colspan="2">Action</th>
+			<th colspan="2"></th>
 		</tr>
 		<?php  
 			$sql="SELECT * FROM Categorize";
@@ -44,10 +60,10 @@ require_once 'Layout/header.php';
 						echo "<td>".$id."</td>";
 						echo "<td>".$row['Name']."</td>";
 						echo "<td>";
-							echo "<a href='index.php?module=categorize&action=edit&id=$id'> Edit </a>";
+							echo "<a href='index.php?module=categorize&action=edit&id=$id'><i class='far fa-edit'></i> </a>";
 						echo "</td>";	
 						echo "<td>";
-							echo "<a href='index.php?module=categorize&action=delete&id=$id'> Delete </a>";
+							echo "<a href='index.php?module=categorize&action=delete&id=$id'> <i class='far fa-trash-alt'></a>";
 						echo "</td>";
 					echo "</tr>";
 				}	

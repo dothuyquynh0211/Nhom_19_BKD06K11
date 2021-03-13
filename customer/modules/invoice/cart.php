@@ -37,29 +37,19 @@ if (isset($_GET['id'])) {
 $title = "Giỏ hàng";
 require_once ('layout/headerCus.php');
 ?>
-<style>
-	table{
-		width: 100%;
-	}
-	table ,th, tr ,td{
-		border: 1px solid black;
-	}
-</style>
+
 <div class="cart">
+	<h2>Giỏ hàng</h2>
 	<table>
 		<tr>
-			<th>STT</th>
 			<th>Sản phẩm</th>
-			<th>Đơn giá</th>
 			<th>Số lượng</th>
 			<th>Thành tiền</th>
-			<th>Action</th>
+			<th></th>
 		</tr>
 			<?php 
-			$count=0;
 			$total_payment=0;
-			foreach ($_SESSION['cart'] as $id => $quantity) {
-				$count +=1;			
+			foreach ($_SESSION['cart'] as $id => $quantity) {		
 			 	$sql="SELECT id_Product,Name, Price, image FROM Product WHERE id_Product='$id'";
 			 	$result= mysqli_query($conn,$sql);
 			 	if ($result == false) {
@@ -72,38 +62,49 @@ require_once ('layout/headerCus.php');
 			 		$price = $row['Price'];
 			 		$id_Pro=$row['id_Product'];
 			 		echo "<tr>";
-			 			echo "<td>".$count."</td>";
 			 			echo "<td>";
-			 				echo $name."<br>";
-			 				echo "<img src='$url' width='100px'>";
+			 			echo "<div class='inf'>";
+			 				
+			 				echo "<img src='$url' >";
+			 				echo "<div>";
+			 					echo "<p>".$name."</p><br>";
+			 					$pricer=number_format("$price",0,",",".");
+			 					echo "<span>".$pricer."₫</span>";
+			 				echo "</div>";
+			 			echo "</div>";
 			 			echo "</td>";
-			 			echo "<td> $price</td>";
+			 			
 
 			 			echo "<td> ";
-			 				echo "<a href='index.php?module=invoice&action=cart&id=$id&down'><button class='btn_quantity'> - </button></a>";
-			 				echo $quantity;
-			 				echo "<a href='index.php?module=invoice&action=cart&id=$id&up'><button class='btn_quantity'> + </button></a>";
+			 			echo "<div class=btn_quantity>";
+			 				echo "<a href='index.php?module=invoice&action=cart&id=$id&down'><i class='far fa-minus-square'></i></a>";
+			 				echo $quantity ;
+			 				echo "<a href='index.php?module=invoice&action=cart&id=$id&up'><i class='far fa-plus-square'></i></a>";
+			 			echo "</div>";
 			 			echo "</td>";
-			 			echo "<td>".($price*$quantity)."</td>";
+			 			$total=($price*$quantity);
+			 			$total=number_format("$total",0,",",".");
+			 			echo "<td>".$total."₫</td>";
 			 			$total_payment += ($price*$quantity);
 			 			$_SESSION['total']=$total_payment;
 			 			echo "<td>";
-			 				echo "<a href='index.php?module=invoice&action=cart&id=$id&delete'>Xóa</a>";
+			 				echo "<a href='index.php?module=invoice&action=cart&id=$id&delete' class='remove'><i class='far fa-times-circle'></i></a>";
 			 			echo "</td>";
 			 		echo "</tr>";		 		
 			 	}
 
 			}
-			echo "<tr>";
-			 	echo "<th colspan='4'>Tổng tiền </th>";
-			 	echo "<th>".number_format($total_payment)."</th>";
-			echo "</tr>";
-
 		?>
 	</table>
+	<div class="total">
+		<h2>Tổng tiền : <?php echo number_format("$total_payment",0,",","."); ?>₫</h2>
+	</div>
+	<div class="check">
 	<?php  if (isset($id_Pro))  {
-		echo "<a href='index.php?module=invoice&action=checkout'> Mua hang</a>";		
-	} ?>
+		echo "<a href='index.php?module=invoice&action=checkout'><button> Mua hàng </button></a>";		
+	} ?>	
+	</div>
+	
 	
 </div>
 <?php  

@@ -89,33 +89,100 @@ require_once 'Layout/header.php';
 ?>
 
 <style type="text/css">
-	.pl form{
-		font-size: 16px;
-		padding: 20px 20px;
-	}
-	
+		.edit_product{
+  /*text-align: left;*/
+  margin-top: 20px;  
+  padding-left: 30px;
+}
+.edit_product form label{
+	font-size: larger;
+}
+.edit_product form{
+  margin-top: 30px;
+}
+.edit_product form p{
+  display: inline-block;
+  float: left;
+  padding-left: 50px;    
+}
+.edit_product form input{
+  font-size: 16px;
+  width: 270px;
+  height: 35px;
+  
+  padding-left: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+
+}
+.edit_product form .img input{
+	outline: none;
+  border : 1px solid green;
+}
+.edit_product form .sl{
+	  font-size: 16px;
+  width: 200px;
+  height: 35px;
+  border-radius: 5px;
+}
+.edit_product button{
+  text-align: center;
+      width: 100px;
+      height: 40px;     
+      border-radius: 10px;
+     /* background: lightgreen;*/
+      
+      font-size: 20px;
+      border: none;
+      outline: none;
+      margin-bottom: 20px;
+    }
+.edit_product button:hover{
+      background: #0BA61D;
+      color: white;
+      transition: background 0.6s;
+}
+.left{
+	float: left;
+	width: 50%;
+}
+.right{
+	float: left;
+	min-height: 500px;
+}
+.foot{
+	clear: both;
+}
+#sdpic{
+	display: grid;
+ grid-template-columns: repeat(4,1fr);;
+ column-gap: 0.5rem;
+ grid-row-gap: 0.5rem;
+ margin: 0;
 </style>
-<div class="pl">
+<div class="edit_product">
 	<h1>Sửa sản phẩm </h1>
 	<form method="POST" enctype="multipart/form-data">
-		<label > Name <br>
+		<div class="left">
+		<label class="img" > Tên sản phẩm<br>
 			<input type="text" name="Name" required value="<?php echo $name ?>">
 		</label>
 		<br>
-		<label > Gía <br>
+		<label class="img"> Gía sản phẩm<br>
 			<input type="text" name="gia" required value="<?php echo $price ?>">
 		</label>
 		<br>
 		<label >Tình trạng<br>
-			<select name="status" >
+			<select name="status"  class="sl" >
 				<option value="0" <?php  if($status==0) echo "selected"?>>Hết hàng</option>
 				<option value="1" <?php  if($status==1) echo "selected"?>>Còn hàng</option>
 				<option value="2" <?php  if($status==2) echo "selected"?>>Hàng sắp về</option>
 			</select>			
 		</label>
 		<br>
+		<br>
 		<label> Phân loại <br>
-			<select name="categorize">
+			<select name="categorize"  class="sl">
 				<?php  
 					$sql="SELECT id_Categorize,Name FROM Categorize";
 					$result=mysqli_query($conn,$sql);
@@ -139,31 +206,40 @@ require_once 'Layout/header.php';
 				?>	
 			</select>			
 		</label>
-		<br>
-		<br>
-		<label >  Ảnh <br>
-			<input type="file" name="image" >
-			<img src="<?php echo $file_name ;?>" >
-		</label>
-		<br>
-		<label > Ảnh mô tả <br>
-			<input type="file" name="images[]" multiple="multiple"  >
+		</div>
+		<div class="right">
+			<label>
+				<img src="<?php echo $file_name ;?>" width=200px height=200px>
+			</label>
 			<br>
-			<?php  
-				foreach ($img_pro as $key => $value) { ?>
-					<img src="<?php echo $value['URL'] ?>" alt='ảnh phụ' style="max-height: 100px; max-width: 250px;">
+			<label >  Ảnh chính<br>
 				
-			<?php } ?>
-
-		</label>
-		<br>
-		<label > Mô tả <br>
+				<input type="file" name="image" >				
+			</label>
+			<br>
+			<label  > 
+				
+				<div id="sdpic">
+				<?php  
+					foreach ($img_pro as $key => $value) { ?>
+						<img src="<?php echo $value['URL'] ?>" alt='ảnh phụ' style="height: 100px; width: 100px;">
+					
+				<?php } ?>
+				</div>
+				Ảnh mô tả <br>
+				<input type="file" name="images[]" multiple="multiple"  >
+				<br>
+			</label>
+		</div>
+		<div class="foot">
+		<label > Mô tả sản phẩm<br>
 			<textarea cols="50" rows="5" name="description" id="description"> <?php echo $description; ?></textarea>
 		</label>
 		<br>
+		</div>
 		<button type="submit" name="btn">Sửa</button>
 	</form>
 </div>
 <?php  
 require_once 'Layout/footer.php';
-?>"
+?>
