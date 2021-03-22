@@ -57,7 +57,7 @@ else{
 		<table>
 			<?php 
 				$total=mysqli_num_rows($result);
-				if(!empty($kw)) echo "<h2> Có tất cả $tong_sp kết quả tìm kiếm cho $kw </h2>";
+				if(!empty($kw)) echo "<h3> Có tất cả $tong_sp kết quả tìm kiếm về : $kw </h3>";
 				$count=0;
 				$n=4;
 				while($count != $total){

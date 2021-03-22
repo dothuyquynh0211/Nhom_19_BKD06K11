@@ -1,4 +1,4 @@
-     <?php 
+<?php 
 if(isset($_GET['id'])) {
 	$id=$_GET['id'];
 	$sql="SELECT product.*,product_images.URL FROM `product` JOIN product_images ON product_images.id_Product=product.id_Product WHERE product.id_Product='$id'";

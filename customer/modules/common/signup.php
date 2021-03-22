@@ -147,7 +147,7 @@ if(isset($_POST['btnSignup'])){
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			opacity: 75%;
+			/*opacity: 75%;*/
 			box-shadow: 0px 25px 45px rgba(0,0,0,0.1);
 			border: 1px solid rgba(255,255,255,0.5);
 			border-right: 1px solid rgba(255,255,255,0.1);
@@ -229,31 +229,31 @@ if(isset($_POST['btnSignup'])){
 			<div class="square" style="--i:5;"></div>
 			<div class="container">
 				<div class="form">
-					<h2>Sign up Form</h2>
+					<h2>Đăng kí</h2>
 					<form method="POST">
 						<div class="input_box">
-							<input type="text" name="Name" placeholder="Name" required>
+							<input type="text" name="Name" placeholder="Tên" required>
 						</div>						
 						<div class="input_box">
-							<input type="text" name="Phone" placeholder="Phone" required>
+							<input type="text" name="Phone" placeholder="Số điện thoại" required>
 						</div>
 						<div class="input_box">
-							<input type="text" name="address" placeholder="Address" required>
+							<input type="text" name="address" placeholder="Địa chỉ" required>
 						</div>
 						<div class="input_box">
 							<input type="email" name="email" placeholder="Email" required>
 						</div>
 						<div class="input_box">
-							<input type="password" name="pass" placeholder="Password" required>
+							<input type="password" name="pass" placeholder="Mật khẩu" required>
 						</div>
 						<div class="input_box">
-							<input type="password" name="pass2" placeholder="Nhập lại pasword" required>
+							<input type="password" name="pass2" placeholder="Nhập lại mật khẩu" required>
 						</div>
 						<div class="input_box">
 							<input type="submit" name="btnSignup" value="Sign up">
 						</div>
-						<p class="forget"><a href="index.php?module=common&action=login">Login</a></p>
-						<p class="forget">Forgot password ? <a href="">Click Here</a></p>
+						<p class="forget"><a href="index.php?module=common&action=login">Đăng nhập</a></p>
+						<p class="forget">Quên mật khẩu ? <a href="">Tại đây</a></p>
 					</form>
 				</div>
 			</div>

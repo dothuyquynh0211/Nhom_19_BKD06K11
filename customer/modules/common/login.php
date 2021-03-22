@@ -147,7 +147,7 @@ if(isset($_POST['btnLogin'])){
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			opacity: 75%;
+			/*opacity: 75%;*/
 			box-shadow: 0px 25px 45px rgba(0,0,0,0.1);
 			border: 1px solid rgba(255,255,255,0.5);
 			border-right: 1px solid rgba(255,255,255,0.1);
@@ -162,7 +162,7 @@ if(isset($_POST['btnLogin'])){
 		}
 		.form h2{
 			position: relative;
-			color: #fff;
+			color: white;
 			font-size: 34px;
 			margin-top:0px;
 			letter-spacing: 1px;
@@ -228,19 +228,19 @@ if(isset($_POST['btnLogin'])){
 			<div class="square" style="--i:5;"></div>
 			<div class="container">
 				<div class="form">
-					<h2>Login Form</h2>
+					<h2>Đăng nhập</h2>
 					<form method="POST">
 						<div class="input_box">
-							<input type="text" name="PhoneOrEmail" placeholder="Phone or Email" required>
+							<input type="text" name="PhoneOrEmail" placeholder="Số điện thoại hoặc Email" required>
 						</div>						
 						<div class="input_box">
-							<input type="password" name="pw" placeholder="Password" required>
+							<input type="password" name="pw" placeholder="Mật khẩu" required>
 						</div>
 						<div class="input_box">
-							<input type="submit" name="btnLogin" value="Login">
+							<input type="submit" name="btnLogin" value="Đăng nhập">
 						</div>
-						<p class="forget">Forgot password ? <a href="">Click Here</a></p>
-						<p class="forget"> Don't have an account?<a href="index.php?module=common&action=signup">Sign up</a></p>						
+						<p class="forget">Quên mật khẩu? <a href="">Tại đây</a></p>
+						<p class="forget"> Bạn chưa có tài khoản?<a href="index.php?module=common&action=signup">Đăng kí</a></p>						
 					</form>
 				</div>
 			</div>

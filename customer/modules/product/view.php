@@ -13,7 +13,7 @@ if(isset($_GET['id'])) {
 		$view ++;
 		$sql="UPDATE Product SET view = '$view' WHERE id_Product='$id'";
 		$result=mysqli_query($conn,$sql);
-		//echo "view tăng";
+		// echo "view tăng";
 		
 	}
 	header("Location:index.php?module=product&action=detail&id=$id");

@@ -53,7 +53,7 @@ require_once ('layout/headerCus.php');
   	<div class="inf_product">
   		<h2><?php  echo $name ; ?></h3>
       <div class="inf_product_price">
-        <p><?php echo number_format("$price",0,",","."); ; ?>₫</p>
+        <p><?php echo number_format("$price",0,",",".") ?>₫</p>
       </div> 
       <div class="inf_product_dess">
         <?php 

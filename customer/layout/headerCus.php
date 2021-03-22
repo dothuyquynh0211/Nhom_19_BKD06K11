@@ -37,11 +37,12 @@
 							<a href="index.php?module=invoice&action=cart"><i class="fas fa-cart-plus" style="font-size: 20px;"></i>
 							<?php  
 							$sl=0;
-							if(isset($_SESSION['cart'])){
-								foreach ($_SESSION['cart'] as $id => $quantity) {
+							if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0){						
+								foreach ($_SESSION['cart'] as $id_Sp => $quantity) {
 									$sl += $quantity;
-								}
-								echo "($sl)";
+									
+								}	
+								echo "($sl)";							
 							}
 							?> 
 							</a>
@@ -84,7 +85,7 @@
 							echo  "<div class='dn' >";
 							
 								echo "<a href='index.php?module=common&action=login'>Đăng nhập</a>";
-								echo "<a href='index.php?module=common&action=signup'>Đăng kí</a>";
+								// echo "<a href='index.php?module=common&action=signup'>Đăng kí</a>";
 							echo "</div";
 							}
 							?>
@@ -108,7 +109,7 @@
 				<li><a href="index.php?module=product&action=list_Caychautreo"><i class="fas fa-seedling"></i>Cây chậu treo</a></li>
 				<li><a href="index.php?module=product&action=list_Caythuysinh"><i class="fas fa-seedling"></i>Cây thủy sinh</a>
 				</li>
-				<li><a href="index.php?module=product&action=ky_thuat"><i class="fas fa-seedling"></i> Kỹ thuật chung</a></li>
+				<li><a href="index.php?module=post&action=list"><i class="fas fa-seedling"></i> Kiến thức chung</a>
 			</ul>
 		</div>
 		<div class="content">

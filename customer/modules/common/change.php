@@ -34,7 +34,7 @@ $title="Password || Chun Garden" ;
 require_once ('layout/headerCus.php');
 ?>
 <div class="change_pass">
-	<h2>Đổi mật khẩu</h2>
+	<h1 style="color: green;">Đổi mật khẩu</h1>
 	<p style="color: red"><?php echo $error; ?></p>
 	<form method="POST">
 		<p>Tên tài khoản</p>

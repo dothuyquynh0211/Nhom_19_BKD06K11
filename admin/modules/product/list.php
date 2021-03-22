@@ -89,7 +89,7 @@ require_once 'Layout/header.php';
   margin-top: 30px;
   text-align: center;
 }
-	</style>
+</style>
 	<div class="search">
 		<form class="content_search" >
 			<input type="hidden" name="module" value="product">
@@ -119,7 +119,7 @@ require_once 'Layout/header.php';
 	<tr>
 		<?php 
 			$total=mysqli_num_rows($result);
-			if(isset($kw)) echo "<h2> Có tất cả $total kết quả tìm kiếm cho $kw </h2>";
+			if(isset($kw)) echo "<h2> Có tất cả $total kết quả tìm kiếm cho : $kw </h2>";
 			if(mysqli_num_rows($result)==0){
 				echo"<tr>
 				<th colspan='8'>Danh sach trong</th></tr>";

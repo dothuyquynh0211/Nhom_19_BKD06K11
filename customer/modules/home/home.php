@@ -10,9 +10,9 @@ if ($result_noibat==false) {
   die("Loi:".mysqli_error($conn));
 } 
 //sản phẩm mới nhất
-$sql="SELECT id_Product, Name,Price,image FROM Product ORDER BY id_Product DESC LIMIT 5 ";
-$result=mysqli_query($conn,$sql);
-if ($result==false) {
+$sql_moinhat="SELECT id_Product, Name,Price,image FROM Product ORDER BY id_Product DESC LIMIT 5 ";
+$result_moinhat=mysqli_query($conn,$sql_moinhat);
+if ($result_moinhat==false) {
   die("Loi:".mysqli_error($conn));
 } 
 // sản phẩm bán chạy 
@@ -44,7 +44,7 @@ if ($result_ban==false) {
               $count++;
               $id=$row['id_Product'];
               echo "<td class='item'>";
-                echo "<a href='index.php?module=product&action=detail&id=$id'>";
+                echo "<a href='index.php?module=product&action=view&id=$id'>";
                   $url=$row['image'];
                   echo "<img src='$url' width='200px'>";
                   echo "<br><b>".$row['Name']."</b><br>";
@@ -64,29 +64,28 @@ if ($result_ban==false) {
     </div>
      
   </div>
-  <div class="box">
-  	<h2>Sản phẩm mới nhất</h2>
-  	<!-- lấy ra sp có id lơn nhất -->
+    <div class="box">
+    <h2>SẢN PHẨM MỚI NHẤT</h2>
+    <!-- lấy ra sp có id lơn nhất -->
     <table >
       <?php 
-        $total=mysqli_num_rows($result); 
+        $total=mysqli_num_rows($result_moinhat); 
         $count=0;
-        $n=5;// 3sp trên 1 hàng
+        $n=5;// 5sp trên 1 hàng
         while($count != $total){
           echo "<tr>";
-            while ($row=mysqli_fetch_assoc($result)) {
+            while ($row=mysqli_fetch_assoc($result_moinhat)) {
               $count++;
               $id=$row['id_Product'];
               echo "<td class='item'>";
-                echo "<a href='index.php?module=product&action=detail&id=$id'>";
+                echo "<a href='index.php?module=product&action=view&id=$id'>";
                   $url=$row['image'];
                   echo "<img src='$url' width='200px'>";
-                  echo "<b>".$row['Name']."</b><br>";
+                  echo "<br><b>".$row['Name']."</b><br>";
                  $price =$row['Price'];
                   $pricer=number_format("$price",0,",",".");
                             echo "<b class='gia'>".$pricer."₫</b>";
                 echo "</a>";
-                
               echo "</td>";
               if($count %$n==0) break;
             }
@@ -94,14 +93,15 @@ if ($result_ban==false) {
         }
       ?>
     </table>
-   <div class="view_more">
-       <a href="index.php?module=product&action=product" > <button> Xem thêm <i class="fas fa-angle-right"></button></i></a>
-    </div>
-     
+    <div class="view_more">
+      <a href="index.php?module=product&action=product" > 
+        <button> Xem thêm <i class="fas fa-angle-right"></button></i>
+      </a>
+    </div>     
   </div>
   <div class="box">
     <div class="produce">
-      <h2>Sản phẩm bán chạy</h2>
+      <h2>SẢN PHẨM BÁN CHẠY</h2>
     <!-- lấy ra sản phẩm có số lượng lớn nhất trong đơn hàng -->
     <table >
       <?php 
@@ -114,7 +114,7 @@ if ($result_ban==false) {
               $count++;
               $id=$row['id_Product'];
               echo "<td class='item'>";
-                echo "<a href='index.php?module=product&action=detail&id=$id'>";
+                echo "<a href='index.php?module=product&action=view&id=$id'>";
                   $url=$row['image'];
                   echo "<img src='$url' width='200px'>";
                   echo "<br><b>".$row['Name']."</b><br>";
@@ -130,11 +130,13 @@ if ($result_ban==false) {
         }
       ?>
     </table>
-   <div class="view_more">
-       <a href="index.php?module=product&action=product" > <button> Xem thêm <i class="fas fa-angle-right"></button></i></a>
-    </div>
-     
+    <div class="view_more">
+       <a href="index.php?module=product&action=product" > 
+        <button> Xem thêm <i class="fas fa-angle-right"></button></i>
+       </a>
+    </div>     
   </div>
+  
 <?php  
 require_once ('layout/footerCus.php');
 ?>

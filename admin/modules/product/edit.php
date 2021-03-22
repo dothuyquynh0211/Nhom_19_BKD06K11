@@ -89,7 +89,7 @@ require_once 'Layout/header.php';
 ?>
 
 <style type="text/css">
-		.edit_product{
+.edit_product{
   /*text-align: left;*/
   margin-top: 20px;  
   padding-left: 30px;
@@ -221,7 +221,8 @@ require_once 'Layout/header.php';
 				
 				<div id="sdpic">
 				<?php  
-					foreach ($img_pro as $key => $value) { ?>
+					foreach ($img_pro as $key => $value) {
+						?>
 						<img src="<?php echo $value['URL'] ?>" alt='ảnh phụ' style="height: 100px; width: 100px;">
 					
 				<?php } ?>

@@ -84,6 +84,7 @@
 		  display:block;
 
 		}
+		
 		#menu{
 			width: 20%;	
 			height: 30vh;
@@ -146,7 +147,7 @@
 			<div class="right">
 				<ul>
 					<li>
-						<a href="#">
+						<a href="index.php?module=common&action=manage">
 						<h3><?php if(isset($_SESSION['admin'])) echo $_SESSION['admin']['name'];?></h3>
 						<i class="fas fa-angle-down" onclick="foo"></i>
 						</a>
@@ -172,7 +173,7 @@
 			</ul>			
 			<ul class="ql">
 				<li>
-					<a href="index.php?module=categorize&action=list">Quản lý bài viết</a>
+					<a href="index.php?module=post&action=list">Quản lý bài viết</a>
 				</li>
 			</ul>
 			<ul class="ql">

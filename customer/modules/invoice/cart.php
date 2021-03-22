@@ -3,27 +3,27 @@ if(!isset($_SESSION['cart'])){
 	$_SESSION['cart'] = array() ;	
 }
 if (isset($_GET['id'])) {
-	$id=$_GET['id'];
+	$id_Sp=$_GET['id'];
 	//tang, giam so luong
-	if (isset($_SESSION['cart'][$id])) {
+	if (isset($_SESSION['cart'][$id_Sp])) {
 		if(isset($_GET['up'])){
-			$_SESSION['cart'][$id] +=1;
+			$_SESSION['cart'][$id_Sp] +=1;
 		}
 		if(isset($_GET['down'])){
-			$_SESSION['cart'][$id] -=1;
-			if($_SESSION['cart'][$id]<1){
-				unset($_SESSION['cart'][$id]);
+			$_SESSION['cart'][$id_Sp] -=1;
+			if($_SESSION['cart'][$id_Sp]<1){
+				unset($_SESSION['cart'][$id_Sp]);
 
 			}
 		}
 		
 	}
 	else{
-		$_SESSION['cart'][$id]=1;
+		$_SESSION['cart'][$id_Sp]=1;
 	}
 	//xoa san pham khoi gio hang
 	if(isset($_GET['delete'])){
-		unset($_SESSION['cart'][$id]);
+		unset($_SESSION['cart'][$id_Sp]);
 		header("Location:index.php?module=invoice&action=cart");
 		die();
 	}

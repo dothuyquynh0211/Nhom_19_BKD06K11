@@ -62,22 +62,22 @@
 				<div class="content_box">
 					<ul>
 						<li>
-							<a href=""><span>Quy định đổi hàng</span></a>
+							<a ><span>Quy định đổi hàng</span></a>
 						</li>
 					</ul>
 					<ul>
 						<li>
-							<a href=""><span>Chính sách bảo hành</span></a>
+							<a ><span>Chính sách bảo hành</span></a>
 						</li>
 					</ul>
 					<ul>
 						<li>
-							<a href=""><span>Chính sách vận chuyển</span></a>
+							<a ><span>Chính sách vận chuyển</span></a>
 						</li>
 					</ul>
 					<ul>
 						<li>
-							<a href=""><span>Bảo mật thông tin</span></a>
+							<a><span>Bảo mật thông tin</span></a>
 						</li>
 					</ul>
 					

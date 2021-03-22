@@ -28,33 +28,87 @@
 	}
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<h1>thông tin tài khoản</h1>
-	<div>Tên tài khoản : <?php  echo $name ;?></div>
+
+<?php 
+$title="Bài viết" ; 
+require_once 'Layout/header.php';
+?>
+<style type="text/css">
+	.change_pass{
+  /*text-align: center;*/
+  margin-top: 20px;
+  padding-left: 30px;
+  /*width: 400px;
+      height: 300px;*/
+}
+.change_pass h2{
+font-size: 20px;
+}
+.change_pass form{
+  margin-top: 20px;
+}
+/*.change_pass form p{
+
+  float: left;
+  padding-left: 50px;    
+}*/
+.change_pass form input{
+  font-size: 20px;
+  width: 270px;
+  height: 35px;
+  outline: none;
+  border : 1px solid green;
+  padding-left: 20px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+
+}
+.change_pass button{
+  text-align: center;
+      width: 100px;
+      height: 40px;     
+      border-radius: 10px;
+     /* background: lightgreen;*/
+      
+      font-size: 20px;
+      border: none;
+      outline: none;
+    }
+.change_pass button:hover{
+      background: #0BA61D;
+      color: white;
+      transition: background 0.6s;
+}
+.change_pass h1 {
+	color: green;
+
+}
+.name{
+	margin: 10px;
+	font-size: 20px;
+}
+</style>
+<div class="change_pass">
+	<h1>Thông tin tài khoản</h1>
+	<div class="name"> <?php  echo $name ;?></div>
 	<div>
 		<h2>Đổi mật khẩu</h2>
 		<p style="color: red"><?php echo $error; ?></p>
 		<form method="POST">
-				<p>Name</p>
-				<input type="text" name="user" required >
-				
-				<p>Email</p>
-				
-				<input type="text" name="email" required >
-				
-				<p>mật khẩu cũ</p>
+				<p>Tên</p>
+				<input type="text" name="user" required >				
+				<p>Email</p>				
+				<input type="text" name="email" required >				
+				<p>Mật khẩu cũ</p>
 				<input type="password" name="old_pw" required >
-				<p>mật khẩu mới</p>
+				<p>Mật khẩu mới</p>
 				<input type="password" name="new_pw" required >
 				<br> 
-				<button type="submit" name="btnUpdate">update</button>
-			</form>
+				<button type="submit" name="btnUpdate">Cập nhật</button>
+		</form>
 	</div>
-	<a href="index.php?module=product&action=list">trở lại</a>
-</body>
-</html>
+	
+</div>
+<?php  
+require_once 'Layout/footer.php';
+?>
