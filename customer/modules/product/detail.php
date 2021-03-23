@@ -16,6 +16,7 @@ if(isset($_GET['id'])) {
 		$dess=$row['Description'];
 		$url=$row['image'];
     $status=$row['Status'];
+    $id_category=$row['id_Categorize'];
 	}
 }
 ?>
@@ -73,6 +74,47 @@ require_once ('layout/headerCus.php');
         <p><?php  echo $dess ?></p>
       </div>
   	</div>   
+  </div>
+</div> 
+<!-- kết thúc content -->
+<style type="text/css">
+  .content{
+    margin-bottom: 30px;
+  }
+  .box {
+    box-shadow: none;
+  }
+</style>
+ <div class="box"><h2>Sản phẩm liên quan</h2>
+    <table>
+      <?php 
+      $sql_lq="SELECT * FROM product WHERE id_Categorize='$id_category' LIMIT 10";
+      $result_lq = mysqli_query($conn,$sql_lq);
+      $total_lq=mysqli_num_rows($result_lq);
+      $count=0;
+      $n=5;
+        while($count != $total_lq){
+          echo "<tr>";
+            while ($row=mysqli_fetch_assoc($result_lq)) {
+              $count++;
+              $id=$row['id_Product'];
+              echo "<td class='item'>";
+                echo "<a href='index.php?module=product&action=view&id=$id'>";
+                  $url=$row['image'];
+                  echo "<img src='$url' width='200px'>";
+                  echo "<br><b>".$row['Name']."</b><br>";
+                  $price =$row['Price'];
+                  $pricer=number_format("$price",0,",",".");
+                            echo "<b class='gia'>".$pricer."₫</b>";
+                echo "</a>";
+              echo "</td>";
+              if($count %$n==0) break;
+            }
+          echo "</tr>";
+
+        }
+      ?>
+    </table>
   </div>
 <?php  
 require_once ('layout/footerCus.php');

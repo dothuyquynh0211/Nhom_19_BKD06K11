@@ -42,6 +42,11 @@ else{
 
 }
 ?>
+<style type="text/css">
+	.box{
+		box-shadow: none;
+	}
+</style>
 
 	<div class="search">
 		<form class="content_search">

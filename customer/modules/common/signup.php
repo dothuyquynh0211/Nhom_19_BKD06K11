@@ -19,9 +19,9 @@ if(isset($_POST['btnSignup'])){
 		$_SESSION['avt']= $anh;
 		header("Location:index.php?module=common&action=login");
 	}
-	else{
-		echo $error = "loi: ".mysqli_error($conn);
-	}
+	// else{
+	// 	echo $error = "loi: ".mysqli_error($conn);
+	// }
 }
 ?>
 <!DOCTYPE html>
@@ -213,6 +213,7 @@ if(isset($_POST['btnSignup'])){
 		}
 		
 	</style>
+	
 </head>
 <body>
 	<section>
@@ -230,12 +231,12 @@ if(isset($_POST['btnSignup'])){
 			<div class="container">
 				<div class="form">
 					<h2>Đăng kí</h2>
-					<form method="POST">
+					<form method="POST" >
 						<div class="input_box">
 							<input type="text" name="Name" placeholder="Tên" required>
 						</div>						
 						<div class="input_box">
-							<input type="text" name="Phone" placeholder="Số điện thoại" required>
+							<input type="text" name="Phone" placeholder="Số điện thoại" required >
 						</div>
 						<div class="input_box">
 							<input type="text" name="address" placeholder="Địa chỉ" required>
@@ -247,7 +248,7 @@ if(isset($_POST['btnSignup'])){
 							<input type="password" name="pass" placeholder="Mật khẩu" required>
 						</div>
 						<div class="input_box">
-							<input type="password" name="pass2" placeholder="Nhập lại mật khẩu" required>
+							<input type="password" name="pass2" placeholder="Nhập lại mật khẩu" required >
 						</div>
 						<div class="input_box">
 							<input type="submit" name="btnSignup" value="Sign up">
@@ -261,5 +262,6 @@ if(isset($_POST['btnSignup'])){
 	<!-- 
 	 -->
 	</section>
+
 </body>
 </html>

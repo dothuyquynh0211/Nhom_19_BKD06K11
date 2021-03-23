@@ -97,7 +97,13 @@ require_once ('layout/headerCus.php');
 		?>
 	</table>
 	<div class="total">
+		<?php  if (isset($id_Pro))  { ?>
 		<h2>Tổng tiền : <?php echo number_format("$total_payment",0,",","."); ?>₫</h2>
+	<?php  } else {?>
+		<img src="layout/img/shopping-cart.jpg" width="130px" height="130px">
+		<p>Chưa có sản phẩm </p>
+		
+	<?php } ?>
 	</div>
 	<div class="check">
 	<?php  if (isset($id_Pro))  {

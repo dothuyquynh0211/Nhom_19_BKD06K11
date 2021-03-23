@@ -65,7 +65,7 @@
 								}
 								
 								echo "<p>".$_SESSION['signup']."<i class='fas fa-angle-down'> </i>";
-								// echo "<div class='dropdown'>
+								echo "<div class='dropdown'>";
 								echo"<ul class='dropdown'>
 											<li><a href=''><i class='fas fa-user'></i>Tài khoản</a></li>
 											<li><a href=''><i class='fas fa-sliders-h'></i> Cài đặt</a></li>
